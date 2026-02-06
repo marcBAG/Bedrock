@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedrock Advisory Group | Bitcoin Mining Infrastructure Experts</title>
+    <link rel="icon" type="image/png" href="bedrock_logo_box.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0f10;
+            --secondary: #237B8B;
+            /* Bedrock Teal */
+            --accent: #A65E3F;
+            /* Bedrock Rust */
+            --light: #fafaf8;
+            --gray: #5a6b6d;
+            --border: #e0e6e7;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--primary);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        /* --- Logo Sizing Fix --- */
+        .wide-logo {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* --- Sticky Header Scrolled State --- */
+        nav.scrolled {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav.scrolled .wide-logo {
+            height: 50px;
+        }
+
+        nav.scrolled .nav-container {
+            padding: 0.2rem 3rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fafaf8 0%, #f1f5f6 100%);
+        }
+
+        .hero-watermark {
+            position: absolute;
+            right: -5%;
+            top: 10%;
+            width: 60%;
+            height: 80%;
+            background: url('bedrock_logo.png') no-repeat center right;
+            background-size: contain;
+            opacity: 0.07;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatLogo 25s infinite ease-in-out;
+        }
+
+        @keyframes floatLogo {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-30px, 20px) rotate(1.5deg);
+            }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 3rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4.8rem;
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: var(--secondary);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+            border: 2px solid var(--secondary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* --- Stats --- */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat {
+            padding: 2.2rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .stat:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--gray);
+            letter-spacing: 1px;
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 4rem 3rem;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+        }
+
+        /* --- Core Pillars --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 4rem 2.5rem;
+            border: 1px solid var(--border);
+            background: var(--light);
+            transition: 0.4s;
+        }
+
+        .service-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        /* --- ROI Engine --- */
+        .calculator-section {
+            padding: 4rem 3rem;
+            background: var(--light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .roi-disclaimer {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 1rem auto 0;
+            max-width: 900px;
+            padding: 0 1.5rem;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .calc-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            border: 1px solid var(--border);
+            background: var(--white);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+        }
+
+        .calc-inputs {
+            padding: 4rem;
+            background: #f8fafb;
+            border-right: 1px solid var(--border);
+        }
+
+        .calc-results {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            font-family: inherit;
+            font-weight: 700;
+        }
+
+        .result-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .result-value {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .result-value.profit {
+            color: var(--secondary);
+        }
+
+        /* --- Leadership Section --- */
+        .team {
+            padding: 4rem 3rem;
+            background: #f4f7f8;
+        }
+
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--white);
+            padding: 4rem 2rem;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .member-img {
+            width: 160px;
+            height: 160px;
+            background: var(--border);
+            border-radius: 50% !important;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+        }
+
+        .bio-toggle {
+            margin-top: 0.75rem;
+            display: inline-block;
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.5rem 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+        }
+
+        .member-bio {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.32s ease;
+            color: var(--gray);
+            margin-top: 0.75rem;
+        }
+
+        .member-bio.expanded {
+            max-height: 600px;
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            padding: 4rem 3rem;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            border: 1px solid var(--border);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info {
+            padding: 4rem;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .contact-form {
+            padding: 4rem;
+            background: var(--light);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+        }
+
+        .email-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #050808;
+            color: var(--white);
+            padding: 5rem 3rem;
+            text-align: center;
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 1100px) {
+
+            .hero-container,
+            .calc-container,
+            .team-grid,
+            .services-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .calc-inputs {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wide-logo {
+                height: 40px;
+            }
+
+            .nav-container {
+                padding: 0.5rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* Consider hamburger menu for production */
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero,
+            .section,
+            .calculator-section,
+            .team,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-container {
+                padding: 2rem 0;
+                gap: 3rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat {
+                padding: 1.5rem;
+            }
+
+            .contact-info,
+            .contact-form,
+            .calc-inputs,
+            .calc-results {
+                padding: 2rem;
+            }
+        }
+
+        /* --- Success Popup Message --- */
+        .success-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary);
+            /* Dark industrial background */
+            color: var(--white);
+            padding: 2rem 3rem;
+            border: 2px solid var(--secondary);
+            /* Teal border */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s;
+            pointer-events: none;
+        }
+
+        .success-popup.visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .success-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Hamburger Menu Styles --- */
+        .hamburger {
+            display: none;
+            /* Hidden on desktop */
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu Behavior */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                /* Show on mobile */
+            }
+
+            /* Transform the links into a dropdown menu */
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                /* Sit directly below the header */
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 2rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+
+                /* Animation: Hidden by default */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            /* The "Open" state */
+            .nav-links.active {
+                display: flex;
+                /* Override the previous display:none */
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            /* Turn hamburger into an 'X' when open */
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo-wrap">
+                <img src="bedrock_logo_email.png" alt="Bedrock Advisory Group" class="wide-logo">
+            </a>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#calculator">ROI Engine</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-watermark"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Optimize Your <br><span>Energy</span> <br>Usage Today.</h1>
+                <p style="margin-top: 2rem; font-size: 1.25rem; color: var(--gray); max-width: 550px;">Strategic
+                    advisory and electrical infrastructure expertise for bitcoin mining operations.
+                </p>
+                <div style="margin-top: 3.5rem;">
+                    <a href="#contact" class="cta-button">Secure Consultation</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Years Team Combined Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30MW+</div>
+                    <div class="stat-label">Project Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1MW</div>
+                    <div class="stat-label">In-House Research and Development Facility</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$500M+</div>
+                    <div class="stat-label">Team Combined Capital Project Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Core Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Planning</h3>
+                <p>Feasibility assesment including comprehensive site evaluation and power rate analysis to ensure
+                    project viability before capital
+                    deployment.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Building</h3>
+                <p>Implementation and deployment of infrastructure with end-to-end management of facility buildouts and
+                    hardware procurement.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Operations</h3>
+                <p>Establishing processes and procedures for sustainable, efficient and reliable operations. Including
+                    maintenance plans, AI integration, and management tools for the mining facility.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="calculator">
+        <div class="section-header">
+            <h2 class="section-title">ROI Engine*</h2>
+        </div>
+        <div class="calc-container">
+            <div class="calc-inputs">
+                <div class="form-group">
+                    <label>Energy Rate ($/kWh)</label>
+                    <input type="number" id="calc-elec" value="0.045" step="0.001" oninput="calculateBedrockROI()">
+                </div>
+                <div class="form-group">
+                    <label>Deployment (PH/s)</label>
+                    <input type="number" id="calc-hash" value="100" oninput="calculateBedrockROI()">
+                </div>
+                <div class="form-group">
+                    <label>Power Draw (kW)</label>
+                    <input type="number" id="calc-power" value="3000" oninput="calculateBedrockROI()">
+                </div>
+            </div>
+            <div class="calc-results">
+                <div class="result-item">
+                    <span class="result-label">Est. Monthly Revenue</span>
+                    <div class="result-value" id="res-rev">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Monthly Power OPEX</span>
+                    <div class="result-value" style="color: var(--accent);" id="res-cost">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Net Operating Income</span>
+                    <div class="result-value profit" id="res-profit">$0.00</div>
+                </div>
+            </div>
+        </div>
+        <p class="roi-disclaimer">*The ROI Engine provides estimates based on user inputs and simplified modeled
+            assumptions. Results are for educational purposes only and do not constitute site specific calculations,
+            financial, tax, legal, or investment advice. Real world outcomes will differ. Further analysis of
+            site-specific assessments is recommended to obtain professional guidance and probable ROI calculations.</p>
+    </section>
+
+    <section class="team" id="team">
+        <div class="team-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Leadership</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img"><img src="SquareKurt_PencilSketch.jpg" alt="Kurt Meadows"></div>
+                    <h3 class="member-name">Kurt Meadows</h3>
+                    <p class="member-role">Development</p>
+                    <p class="member-summary" style="font-size: 0.9rem; margin-top: 1.5rem; color: var(--gray);">Leads
+                        strategic site development and partnership initiatives.</p>
+                    <button type="button" class="bio-toggle" aria-expanded="false">More</button>
+                    <div class="member-bio" aria-hidden="true">
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray);">As co-founder and
+                            development lead at Bedrock, Kurt delivers hands-on expertise to utilities, universities,
+                            manufacturers, IPPs and cogen operators to monetize stranded megawatts through tailored
+                            feasibility analysis, procurement, seamless implementation, and operational support. With
+                            over a decade of nationwide consulting experience, he executes complex projects with
+                            paybacks under three years and strong risk mitigation. Kurt led $390M in district energy
+                            transactions via innovative public-private partnerships at a leading advisory firm,
+                            following his role at Duke Energy advising on asset optimizations to boost power generation
+                            margins.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img"><img src="SquareSteve_PencilSketch.jpg" alt="Steve Dunbar"></div>
+                    <h3 class="member-name">Steve Dunbar</h3>
+                    <p class="member-role">Capital Projects</p>
+                    <p class="member-summary" style="font-size: 0.9rem; margin-top: 1.5rem; color: var(--gray);">Directs
+                        large-scale capital projects, logistics, and infrastructure deployments.</p>
+                    <button type="button" class="bio-toggle" aria-expanded="false">More</button>
+                    <div class="member-bio" aria-hidden="true">
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray);">Steve brings 26 years of
+                            operational expertise to Bedrock, specializing in energy-intensive infrastructure execution.
+                            His foundation was forged in the U.S. Navy Nuclear Propulsion Program, honing the technical
+                            precision and "questioning attitude" required to safeguard complex operations. During 13
+                            years at Nucor Steel, he rose through engineering and maintenance to lead large-scale
+                            industrial upgrades and capital projects. Steve subsequently applied this industrial rigor
+                            to optimizing institutional-scale Bitcoin mining operations and infrastructure. At Bedrock,
+                            he translates complex mining strategies into cost-effective physical assets, leveraging
+                            strategic supplier relationships to drive capital efficiency and long-term success.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img"><img src="SquareMarc_PencilSketch.jpg" alt="Marc Parrish"></div>
+                    <h3 class="member-name">Marc Parrish</h3>
+                    <p class="member-role">Mining Strategy</p>
+                    <p class="member-summary" style="font-size: 0.9rem; margin-top: 1.5rem; color: var(--gray);">Directs
+                        high-level mining advisory, operational excellence, and optimized mining strategies.</p>
+                    <button type="button" class="bio-toggle" aria-expanded="false">More</button>
+                    <div class="member-bio" aria-hidden="true">
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray);">Marc spent over a decade
+                            in the steel industry focusing on high voltage power distribution and maintenance,
+                            automation engineering, and heavy industrial electrical maintenance with involvement in over
+                            $100M+ capital projects and key lead roles leading to successful project execution. He also
+                            has been operating a bitcoin mining operation since 2018, which includes education,
+                            continuous learning, and building in the bitcoin mining industry. Bedrock has been a natural
+                            evolution of his expertise and interests to further integrate into the development and
+                            deployment of optimized solutions for underutilized energy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 style="font-family: 'Crimson Pro'; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;">Ready
+                    to Build?</h2>
+                <p style="opacity: 0.8; margin-bottom: 3rem;">Partner with Bedrock Advisory Group to explore options for
+                    implementing small (1MW) to industrial-scale (20MW+) bitcoin mining operations. Our team of experts
+                    will guide you through a thorough feasibility assessment, site selection, infrastructure design, and
+                    operational strategy to maximize usage of underutilized energy capacity.
+                </p>
+                <div style="margin-top: 3rem;">
+                    <p
+                        style="color: var(--secondary); font-weight: 800; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px;">
+                    </p>
+                    <a href="mailto:info@bedrockadvisorygroup.com" class="email-link"></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="email@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Scope</label>
+                        <select name="scope">
+                            <option>Feasibility Study</option>
+                            <option>Facility Build-out</option>
+                            <option>Infrastructure Upgrade</option>
+                            <option>Operations Strategy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="4" placeholder="Briefly describe project scope..."></textarea>
+                    </div>
+                    <div data-netlify-recaptcha="true" style="margin-bottom: 1.5rem;"></div>
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.5;">
+            &copy; 2026 Bedrock Advisory Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        /* --- ROI Calculator Logic --- */
+        function calculateBedrockROI() {
+            const elecCost = parseFloat(document.getElementById('calc-elec').value) || 0;
+            const hashrate = parseFloat(document.getElementById('calc-hash').value) || 0;
+            const powerDraw = parseFloat(document.getElementById('calc-power').value) || 0;
+            const btcPrice = 65000;
+            const yieldPerPH = 0.00065;
+            const monthlyRevenue = (hashrate * yieldPerPH * btcPrice) * 30.4;
+            const monthlyCost = (powerDraw * 24 * elecCost) * 30.4;
+            const monthlyProfit = monthlyRevenue - monthlyCost;
+            const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+            document.getElementById('res-rev').innerText = usd.format(monthlyRevenue);
+            document.getElementById('res-cost').innerText = usd.format(monthlyCost);
+            document.getElementById('res-profit').innerText = usd.format(monthlyProfit);
+        }
+        document.addEventListener('DOMContentLoaded', calculateBedrockROI);
+
+        /* --- Sticky Header Logic --- */
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        /* --- Mobile Menu Logic --- */
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        /* --- AJAX Contact Form Submission (FIXED) --- */
+        const contactForm = document.querySelector('form[name="contact"]');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(contactForm);
+
+                // SECURITY FIX: Explicitly tell Netlify which form this is
+                // (Sometimes the hidden input is missed during parsing)
+                if (!formData.has('form-name')) {
+                    formData.append('form-name', 'contact');
+                }
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                })
+                    .then((response) => {
+                        // LOGIC FIX: Check if Netlify actually accepted it (Status 200)
+                        if (response.ok) {
+                            // 1. Show Success Popup
+                            const popup = document.getElementById('success-message');
+                            popup.classList.add('visible');
+
+                            // 2. Clear the form
+                            contactForm.reset();
+                            // Reset reCAPTCHA if strictly necessary, usually reload handles it
+
+                            // 3. Hide Popup after 3 seconds
+                            setTimeout(() => {
+                                popup.classList.remove('visible');
+                            }, 3000);
+                        } else {
+                            // If Netlify rejects it (e.g. Spam or Captcha fail)
+                            throw new Error('Server rejected submission');
+                        }
+                    })
+                    .catch((error) => {
+                        // Now this runs for both network errors AND server rejections
+                        alert('Submission failed. Please ensure you have checked the "I am not a robot" box.');
+                        console.error(error);
+                    });
+            });
+        }
+    </script>
+    <script>
+        // Team bio expand/collapse - INDIVIDUAL toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggles = document.querySelectorAll('.bio-toggle');
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    // Find the bio immediately following the clicked button
+                    const bio = this.nextElementSibling;
+
+                    // Check if this specific bio is currently open
+                    const isOpen = bio.classList.contains('expanded');
+
+                    if (isOpen) {
+                        // Close it
+                        bio.classList.remove('expanded');
+                        bio.setAttribute('aria-hidden', 'true');
+                        this.setAttribute('aria-expanded', 'false');
+                        this.textContent = 'More';
+                    } else {
+                        // Open it
+                        bio.classList.add('expanded');
+                        bio.setAttribute('aria-hidden', 'false');
+                        this.setAttribute('aria-expanded', 'true');
+                        this.textContent = 'Less';
+                    }
+                });
+            });
+        });
+    </script>
+    <div id="success-message" class="success-popup">
+        <span class="success-icon">✓</span>
+        <div class="success-title">Inquiry Received</div>
+        <p style="font-size: 0.9rem; opacity: 0.8;">We will be in touch shortly.</p>
+    </div>
+</body>
+
+</html>
