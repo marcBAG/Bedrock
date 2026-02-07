@@ -446,6 +446,32 @@
             max-height: 600px;
         }
 
+        /* --- Service Description Toggle --- */
+        .service-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.32s ease;
+            color: var(--gray);
+            margin-top: 0.75rem;
+        }
+
+        .service-description.expanded {
+            max-height: 400px;
+        }
+
+        .service-toggle {
+            margin-top: 0.75rem;
+            display: inline-block;
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.5rem 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+        }
+
         /* --- Contact Section --- */
         .contact {
             padding: 4rem 3rem;
@@ -760,18 +786,30 @@
                 <p>Feasibility assesment including comprehensive site evaluation and power rate analysis to ensure
                     project viability before capital
                     deployment.</p>
+                <button type="button" class="service-toggle" aria-expanded="false">More</button>
+                <div class="service-description" aria-hidden="true">
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray);">Our planning phase ensures every mining operation starts on solid ground. We conduct detailed site assessments, analyze power infrastructure capabilities, evaluate energy costs, and model financial projections. This comprehensive approach identifies risks early, optimizes location selection, and validates ROI assumptions before significant capital commitments.</p>
+                </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">⚡</div>
                 <h3>Building</h3>
                 <p>Implementation and deployment of infrastructure with end-to-end management of facility buildouts and
                     hardware procurement.</p>
+                <button type="button" class="service-toggle" aria-expanded="false">More</button>
+                <div class="service-description" aria-hidden="true">
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray);">From site prep to full operational readiness, we oversee every aspect of infrastructure deployment. In coordination with local contractors our team will coordinate electrical infrastructure, cooling systems, hardware procurement and logistics, and facility construction—ensuring projects stay on schedule and within budget while meeting all technical and safety specifications.</p>
+                </div>
             </div>
             <div class="service-card">
                 <div class="service-icon">🏗️</div>
                 <h3>Operations</h3>
                 <p>Establishing processes and procedures for sustainable, efficient and reliable operations. Including
                     maintenance plans, AI integration, and management tools for the mining facility.</p>
+                <button type="button" class="service-toggle" aria-expanded="false">More</button>
+                <div class="service-description" aria-hidden="true">
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--gray);">Long-term success requires operational excellence. We develop comprehensive operations plans including preventive maintenance schedules, monitoring and control systems, staff training, performance optimization strategies, and integration of advanced AI tools for real-time optimization. Our approach ensures maximum uptime, efficiency, and profitability.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1030,28 +1068,29 @@
         }
     </script>
     <script>
-        // Team bio expand/collapse - INDIVIDUAL toggle
+        // Team bio expand/collapse and Service description expand/collapse - INDIVIDUAL toggle
         document.addEventListener('DOMContentLoaded', () => {
-            const toggles = document.querySelectorAll('.bio-toggle');
+            // Handle both bio toggles and service toggles
+            const allToggles = document.querySelectorAll('.bio-toggle, .service-toggle');
 
-            toggles.forEach(toggle => {
+            allToggles.forEach(toggle => {
                 toggle.addEventListener('click', function () {
-                    // Find the bio immediately following the clicked button
-                    const bio = this.nextElementSibling;
+                    // Find the expandable content immediately following the clicked button
+                    const content = this.nextElementSibling;
 
-                    // Check if this specific bio is currently open
-                    const isOpen = bio.classList.contains('expanded');
+                    // Check if this specific content is currently open
+                    const isOpen = content.classList.contains('expanded');
 
                     if (isOpen) {
                         // Close it
-                        bio.classList.remove('expanded');
-                        bio.setAttribute('aria-hidden', 'true');
+                        content.classList.remove('expanded');
+                        content.setAttribute('aria-hidden', 'true');
                         this.setAttribute('aria-expanded', 'false');
                         this.textContent = 'More';
                     } else {
                         // Open it
-                        bio.classList.add('expanded');
-                        bio.setAttribute('aria-hidden', 'false');
+                        content.classList.add('expanded');
+                        content.setAttribute('aria-hidden', 'false');
                         this.setAttribute('aria-expanded', 'true');
                         this.textContent = 'Less';
                     }
