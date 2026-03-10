@@ -1,0 +1,3 @@
+# Redirect bedrockag.com to bedrockadvisorygroup.com
+https://bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
+https://www.bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
