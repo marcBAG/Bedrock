@@ -314,9 +314,9 @@
         /* --- Pricing --- */
         .pricing-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
-            max-width: 800px;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
@@ -551,7 +551,7 @@
 
             .pricing-grid {
                 grid-template-columns: 1fr;
-                max-width: 400px;
+                max-width: 420px;
             }
 
             .steps-grid {
@@ -741,14 +741,21 @@
             <div class="pricing-grid">
                 <div class="price-card featured">
                     <div class="price-badge">Best Value</div>
-                    <h3>Subscribe</h3>
+                    <h3>Annual</h3>
                     <div class="price-amount">$25 <span class="per">/mo</span></div>
                     <p class="price-detail">Billed annually at $300</p>
-                    <p class="price-savings">Save $300 per year vs. monthly</p>
+                    <p class="price-savings">Save $300 per year</p>
                     <a href="https://pay.zaprite.com/pl_5ENQbzUQsE" class="cta-button">Subscribe Now</a>
                 </div>
                 <div class="price-card">
-                    <h3>One-Time Support</h3>
+                    <h3>Monthly</h3>
+                    <div class="price-amount">$50 <span class="per">/mo</span></div>
+                    <p class="price-detail">Billed monthly</p>
+                    <p class="price-note">Full flexibility, no commitment.</p>
+                    <a href="https://pay.zaprite.com/pl_uhBYDLg7mm" class="cta-button">Subscribe Monthly</a>
+                </div>
+                <div class="price-card">
+                    <h3>One-Time Fix</h3>
                     <div class="price-amount">$75</div>
                     <p class="price-detail">Single incident</p>
                     <p class="price-note">No subscription needed. Just one fix.</p>
