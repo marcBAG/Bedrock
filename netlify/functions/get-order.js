@@ -47,7 +47,7 @@ exports.handler = async (event) => {
         name: order.customerData?.name || "",
         email: order.customerData?.email || "",
         orderId: orderId,
-        amount: order.amount,
+        amount: order.totalAmount,
         currency: order.currency,
         status: order.status,
       }),
