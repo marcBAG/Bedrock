@@ -14,8 +14,8 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: "Missing orderId" }) };
   }
 
-  // Basic validation -- Zaprite order IDs start with "od_"
-  if (!orderId.startsWith("od_")) {
+  // Basic validation -- Zaprite order IDs start with "od_" or "odp_"
+  if (!orderId.startsWith("od_") && !orderId.startsWith("odp_")) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: "Invalid orderId format" }) };
   }
 
