@@ -571,6 +571,14 @@
             </form>
         </div>
 
+        <!-- Already Complete State -->
+        <div id="already-complete" class="success-state hidden">
+            <h2>Onboarding Already Complete</h2>
+            <p>Your agreement for this order has already been recorded. No further action is needed.</p>
+            <p>If you need help, reach us at <strong>support@bedrockadvisorygroup.com</strong>.</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">You can close this page.</p>
+        </div>
+
         <!-- Success State -->
         <div id="success-state" class="success-state hidden">
             <h2>You are all set.</h2>
@@ -656,7 +664,13 @@
                 document.getElementById('form-customer-email').value = data.email || '';
 
                 loadingEl.classList.add('hidden');
-                mainEl.classList.remove('hidden');
+
+                // Check if already onboarded
+                if (data.onboarded) {
+                    document.getElementById('already-complete').classList.remove('hidden');
+                } else {
+                    mainEl.classList.remove('hidden');
+                }
 
             } catch (err) {
                 loadingEl.classList.add('hidden');
@@ -667,35 +681,53 @@
 
         /* Form submission */
         const form = document.querySelector('form[name="onboarding-agreement"]');
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Set agreement timestamp
-            document.getElementById('form-agreed-at').value = new Date().toISOString();
+            const agreedAt = new Date().toISOString();
+            document.getElementById('form-agreed-at').value = agreedAt;
+            const orderId = document.getElementById('form-order-id').value;
 
-            const formData = new FormData(form);
-            if (!formData.has('form-name')) {
-                formData.append('form-name', 'onboarding-agreement');
-            }
-
-            fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        document.getElementById('main-content').classList.add('hidden');
-                        document.getElementById('success-state').classList.remove('hidden');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        throw new Error('Submission failed');
-                    }
-                })
-                .catch((err) => {
-                    alert('Submission failed. Please try again or contact support@bedrockadvisorygroup.com.');
-                    console.error(err);
+            try {
+                // Mark onboarding complete in Zaprite metadata
+                const markResponse = await fetch('/.netlify/functions/complete-onboarding', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderId, agreedAt })
                 });
+
+                if (markResponse.status === 409) {
+                    // Already onboarded
+                    document.getElementById('main-content').classList.add('hidden');
+                    document.getElementById('already-complete').classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
+                if (!markResponse.ok) {
+                    throw new Error('Failed to record agreement');
+                }
+
+                // Also submit to Netlify forms for our records
+                const formData = new FormData(form);
+                if (!formData.has('form-name')) {
+                    formData.append('form-name', 'onboarding-agreement');
+                }
+
+                await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
+
+                document.getElementById('main-content').classList.add('hidden');
+                document.getElementById('success-state').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } catch (err) {
+                alert('Submission failed. Please try again or contact support@bedrockadvisorygroup.com.');
+                console.error(err);
+            }
         });
 
         /* Init */

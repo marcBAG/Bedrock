@@ -50,6 +50,7 @@ exports.handler = async (event) => {
         amount: order.totalAmount,
         currency: order.currency,
         status: order.status,
+        onboarded: order.metadata?.onboarded === "true",
       }),
     };
   } catch (err) {
