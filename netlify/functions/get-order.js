@@ -1,15 +1,3 @@
-const { getStore } = require("@netlify/blobs");
-
-async function checkOnboarded(orderId) {
-  try {
-    const store = getStore("onboarding");
-    const existing = await store.get(orderId);
-    return !!existing;
-  } catch {
-    return false;
-  }
-}
-
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
@@ -62,7 +50,7 @@ exports.handler = async (event) => {
         amount: order.totalAmount,
         currency: order.currency,
         status: order.status,
-        onboarded: await checkOnboarded(orderId),
+        onboarded: false,
       }),
     };
   } catch (err) {

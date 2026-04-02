@@ -665,8 +665,8 @@
 
                 loadingEl.classList.add('hidden');
 
-                // Check if already onboarded
-                if (data.onboarded) {
+                // Check if already onboarded (localStorage)
+                if (localStorage.getItem('onboarded_' + data.orderId)) {
                     document.getElementById('already-complete').classList.remove('hidden');
                 } else {
                     mainEl.classList.remove('hidden');
@@ -719,6 +719,9 @@
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(formData).toString()
                 });
+
+                // Mark as onboarded in localStorage
+                localStorage.setItem('onboarded_' + orderId, agreedAt);
 
                 document.getElementById('main-content').classList.add('hidden');
                 document.getElementById('success-state').classList.remove('hidden');
