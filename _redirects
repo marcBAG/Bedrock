@@ -1,3 +1,6 @@
 # Redirect bedrockag.com to bedrockadvisorygroup.com
 https://bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
 https://www.bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
+
+# Clean URL for MNM partnership page
+/mnm-support    /mnm-support.html   200

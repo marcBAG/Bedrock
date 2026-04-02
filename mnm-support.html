@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Support | MNM x Bedrock</title>
+    <link rel="icon" type="image/png" href="bedrock_logo_box.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0f10;
+            --secondary: #237B8B;
+            --accent: #f7931a;
+            --light: #fafaf8;
+            --gray: #5a6b6d;
+            --border: #e0e6e7;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--primary);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .wide-logo {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.4s ease-in-out;
+            mix-blend-mode: multiply;
+        }
+
+        .mnm-logo {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .logo-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav.scrolled .wide-logo {
+            height: 42px;
+        }
+
+        nav.scrolled .mnm-logo {
+            height: 36px;
+        }
+
+        nav.scrolled .logo-divider {
+            height: 28px;
+        }
+
+        nav.scrolled .nav-container {
+            padding: 0.2rem 3rem;
+        }
+
+        /* --- Hamburger --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        /* --- Partnership Badge --- */
+        .partnership-bar {
+            margin-top: 90px;
+            background: var(--primary);
+            text-align: center;
+            padding: 0.65rem 1.5rem;
+        }
+
+        .partnership-bar p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .partnership-bar span {
+            color: var(--accent);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 5rem 3rem 5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fafaf8 0%, #f1f5f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-watermark {
+            position: absolute;
+            right: -5%;
+            top: 10%;
+            width: 60%;
+            height: 80%;
+            background: url('bedrock_logo.png') no-repeat center right;
+            background-size: contain;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .teal {
+            color: var(--secondary);
+        }
+
+        .hero h1 .orange {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 580px;
+            margin: 0 auto 1rem;
+        }
+
+        .hero .partner-note {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero .partner-note strong {
+            color: var(--accent);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: var(--secondary);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+            border: 2px solid var(--secondary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .cta-button-accent {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button-accent:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 5rem 3rem;
+            background: var(--white);
+        }
+
+        .section-alt {
+            padding: 5rem 3rem;
+            background: var(--light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-top: 0.75rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- Partnership Intro --- */
+        .partner-intro {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .partner-intro-logos {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .partner-intro-logos img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .partner-intro-logos .pi-divider {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--border);
+            font-weight: 300;
+        }
+
+        .partner-intro-text p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .partner-intro-text strong {
+            color: var(--primary);
+        }
+
+        /* --- Coverage Cards --- */
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .coverage-card {
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            background: var(--white);
+            transition: 0.3s;
+        }
+
+        .coverage-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-4px);
+        }
+
+        .coverage-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .coverage-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .coverage-card ul li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            color: var(--gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+
+        .coverage-card ul li .icon {
+            flex-shrink: 0;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .covered .icon {
+            color: var(--secondary);
+        }
+
+        .not-covered .icon {
+            color: #c0392b;
+        }
+
+        /* --- Pricing --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--border);
+            background: var(--white);
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--accent);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.3rem 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .price-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .price-amount {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+
+        .price-amount .per {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .price-detail {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0.5rem 0 0.25rem;
+        }
+
+        .price-savings {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .price-card .cta-button,
+        .price-card .cta-button-accent {
+            width: 100%;
+            text-align: center;
+            padding: 1rem 2rem;
+            margin-top: auto;
+        }
+
+        /* --- How It Works --- */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--secondary);
+            color: var(--white);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+        }
+
+        .step h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* --- Note Box --- */
+        .note-box {
+            border-left: 4px solid var(--secondary);
+            background: var(--white);
+            padding: 2rem 2.5rem;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .note-box h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .note-box p {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        /* --- CTA Banner --- */
+        .cta-banner {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 3rem;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            color: rgba(250, 250, 248, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-banner .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-banner .cta-button {
+            border-color: var(--secondary);
+        }
+
+        .cta-banner .cta-button:hover {
+            background: transparent;
+            color: var(--secondary);
+        }
+
+        .cta-banner .cta-button-accent {
+            border-color: var(--accent);
+        }
+
+        .cta-banner .cta-button-accent:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            padding: 2.5rem 3rem;
+            text-align: center;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-logos img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.6;
+        }
+
+        .footer-logos .fl-divider {
+            color: rgba(255,255,255,0.2);
+            font-size: 1.2rem;
+        }
+
+        footer p {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            color: var(--white);
+        }
+
+        footer .footer-contact {
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.4rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+                margin: 0 auto;
+            }
+
+            .partner-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .nav-container {
+                padding: 0.5rem 1.5rem;
+            }
+
+            nav.scrolled .nav-container {
+                padding: 0.2rem 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem 3.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section,
+            .section-alt {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .coverage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .cta-banner h2 {
+                font-size: 2rem;
+            }
+
+            .partnership-bar {
+                margin-top: 75px;
+            }
+
+            .footer-logos img {
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button,
+            .cta-button-accent {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-wrap">
+                <a href="https://bedrockadvisorygroup.com">
+                    <img src="bedrock_email_sig.png" alt="Bedrock Advisory Group" class="wide-logo">
+                </a>
+                <div class="logo-divider"></div>
+                <a href="https://makenomistakes.shop">
+                    <img src="https://makenomistakes.shop/mnm-avatar.png" alt="Make No Mistakes" class="mnm-logo">
+                </a>
+            </div>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="https://makenomistakes.shop">MNM Hardware</a></li>
+                <li><a href="#coverage">Coverage</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Partnership Bar -->
+    <div class="partnership-bar">
+        <p><span>MNM</span> hardware + <span>Bedrock</span> support = your agent, covered</p>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-watermark"></div>
+        <div class="hero-content">
+            <h1>Your <span class="orange">MNM</span> Agent, <span class="teal">Always Running</span></h1>
+            <p>You bought the hardware from MNM. We keep the agent on it alive. No jargon, no runaround.</p>
+            <p class="partner-note">Official support partner for <strong>Make No Mistakes</strong> pre-built OpenClaw machines.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="cta-button">Support Options</a>
+                <a href="https://makenomistakes.shop" class="cta-button-accent">Visit MNM</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Intro -->
+    <section class="section">
+        <div class="container">
+            <div class="partner-intro">
+                <div class="partner-intro-logos">
+                    <img src="https://makenomistakes.shop/mnm-avatar.png" alt="MNM" style="mix-blend-mode: multiply;">
+                    <span class="pi-divider">+</span>
+                    <img src="bedrock_logo.png" alt="Bedrock" style="mix-blend-mode: multiply;">
+                </div>
+                <div class="partner-intro-text">
+                    <p><strong>MNM builds and ships your OpenClaw machine.</strong> Pre-configured, hardened, ready to go out of the box. <strong>Bedrock keeps it running after that.</strong> When your agent crashes, breaks after an update, or stops doing its job, we connect securely, diagnose the problem, and get you back to a working state. Two companies, one seamless experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Covered / Not Covered -->
+    <section class="section-alt" id="coverage">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What We Cover</h2>
+                <p class="section-subtitle">We keep your AI agent running. Here is exactly what is included and what falls outside support.</p>
+            </div>
+            <div class="coverage-grid">
+                <div class="coverage-card covered">
+                    <h3><span style="color: var(--secondary); font-size: 1.4rem;">&#10003;</span> Included in Support</h3>
+                    <ul>
+                        <li><span class="icon">&#10003;</span> Agent crashes or stops responding</li>
+                        <li><span class="icon">&#10003;</span> Agent configuration breaks after an update</li>
+                        <li><span class="icon">&#10003;</span> Agent fails to start on boot</li>
+                        <li><span class="icon">&#10003;</span> Connectivity issues between your agent and its services</li>
+                        <li><span class="icon">&#10003;</span> Diagnosing why your agent is not doing what it should</li>
+                        <li><span class="icon">&#10003;</span> Getting you back to a working state</li>
+                    </ul>
+                </div>
+                <div class="coverage-card not-covered">
+                    <h3><span style="color: #c0392b; font-size: 1.4rem;">&#10007;</span> Outside Support Scope</h3>
+                    <ul>
+                        <li><span class="icon">&#10007;</span> Hardware problems (screen, keyboard, battery)</li>
+                        <li><span class="icon">&#10007;</span> WiFi or internet issues</li>
+                        <li><span class="icon">&#10007;</span> Operating system troubleshooting</li>
+                        <li><span class="icon">&#10007;</span> Custom agent development or new features</li>
+                        <li><span class="icon">&#10007;</span> Setting up additional software</li>
+                        <li><span class="icon">&#10007;</span> Training or how-to walkthroughs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Pick what works. Cancel anytime.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card featured">
+                    <div class="price-badge">Best Value</div>
+                    <h3>Annual</h3>
+                    <div class="price-amount">$25 <span class="per">/mo</span></div>
+                    <p class="price-detail">Billed annually at $300</p>
+                    <p class="price-savings">Save $300/yr vs. monthly</p>
+                    <p class="price-note">Unlimited support. Active 24 hours after signup.</p>
+                    <a href="https://pay.zaprite.com/pl_5ENQbzUQsE" class="cta-button-accent">Subscribe Now</a>
+                </div>
+                <div class="price-card">
+                    <h3>Monthly</h3>
+                    <div class="price-amount">$50 <span class="per">/mo</span></div>
+                    <p class="price-detail">Billed monthly</p>
+                    <p class="price-savings" style="color: var(--secondary);">Save $25+ per incident vs. one-time</p>
+                    <p class="price-note">Unlimited support. Active 24 hours after signup.</p>
+                    <a href="https://pay.zaprite.com/pl_uhBYDLg7mm" class="cta-button">Subscribe Monthly</a>
+                </div>
+                <div class="price-card">
+                    <h3>One-Time Fix</h3>
+                    <div class="price-amount">$75</div>
+                    <p class="price-detail">Single incident</p>
+                    <p class="price-note">Immediate support. No waiting period.</p>
+                    <a href="https://pay.zaprite.com/pl_zdsjh71hWc" class="cta-button">Get Help Now</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--gray);">Pricing is per agent.</p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-alt" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Three steps. No tickets, no phone trees, no waiting.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Subscribe or Pay</h3>
+                    <p>Pick a plan and check out. Subscriptions activate 24 hours after signup. Need help now? Use one-time support.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Something Breaks</h3>
+                    <p>Your agent stops working, acts weird, or will not start. Email us at support@bedrockadvisorygroup.com.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>We Fix It</h3>
+                    <p>We connect securely, get your agent running again, confirm it is working, and disconnect. You are back in control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third-party note -->
+    <section class="section">
+        <div class="container">
+            <div class="note-box">
+                <h3>A note about third-party services</h3>
+                <p>Your agent relies on services like Anthropic and Google to do its work. If one of those services has an outage, your agent will pause until they are back online. That is not a bug on your end. We monitor for these situations and will let you know what is happening.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Your MNM Machine Deserves Backup</h2>
+            <p>You invested in the hardware. Make sure the agent on it never stays down.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="cta-button-accent" style="font-size: 1.05rem;">Get Support</a>
+                <a href="https://makenomistakes.shop" class="cta-button" style="font-size: 1.05rem;">Shop MNM</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logos">
+            <img src="bedrock_email_sig.png" alt="Bedrock Advisory Group" style="filter: brightness(0) invert(1);">
+            <span class="fl-divider">|</span>
+            <img src="https://makenomistakes.shop/mnm-avatar.png" alt="MNM">
+        </div>
+        <p class="footer-contact">
+            Support: <a href="mailto:support@bedrockadvisorygroup.com">support@bedrockadvisorygroup.com</a> &nbsp;|&nbsp; Hardware: <a href="https://makenomistakes.shop">makenomistakes.shop</a>
+        </p>
+        <p>&copy; 2026 Bedrock Advisory Group x Make No Mistakes. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+    </script>
+
+</body>
+
+</html>
