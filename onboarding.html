@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Bedrock Advisory Group</title>
+    <link rel="icon" type="image/png" href="bedrock_logo_box.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0f10;
+            --secondary: #237B8B;
+            --accent: #A65E3F;
+            --light: #fafaf8;
+            --gray: #5a6b6d;
+            --border: #e0e6e7;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--primary);
+            background: var(--light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .wide-logo {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
+            transition: all 0.4s ease-in-out;
+            mix-blend-mode: multiply;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav.scrolled .wide-logo {
+            height: 50px;
+        }
+
+        nav.scrolled .nav-container {
+            padding: 0.2rem 3rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        /* --- Main Content --- */
+        .onboarding-wrapper {
+            margin-top: 120px;
+            padding: 3rem;
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 4rem;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-header h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .welcome-header h1 span {
+            color: var(--secondary);
+        }
+
+        .welcome-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .customer-info {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .customer-info p {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .customer-info strong {
+            color: var(--primary);
+        }
+
+        /* --- Agreement Sections --- */
+        .agreement-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .agreement-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .agreement-text {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .agreement-text h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 1.25rem 0 0.5rem;
+            color: var(--primary);
+        }
+
+        .agreement-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .agreement-text p {
+            margin-bottom: 0.75rem;
+        }
+
+        .agreement-text ul {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        .agreement-text ul li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* --- Agreement Form --- */
+        .agreement-form {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .agreement-form h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-row input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            cursor: pointer;
+            accent-color: var(--secondary);
+        }
+
+        .checkbox-row label {
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1rem;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--secondary);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .submit-btn:disabled:hover {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        /* --- States --- */
+        .loading-state,
+        .error-state,
+        .success-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-state p,
+        .error-state p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .error-state p {
+            color: var(--accent);
+        }
+
+        .success-state h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .success-state p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto 0.75rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            padding: 2.5rem 3rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            color: var(--white);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .nav-container {
+                padding: 0.5rem 1.5rem;
+            }
+
+            nav.scrolled .nav-container {
+                padding: 0.2rem 1.5rem;
+            }
+
+            .onboarding-wrapper {
+                padding: 1.5rem;
+                margin-top: 100px;
+            }
+
+            .welcome-header h1 {
+                font-size: 2rem;
+            }
+
+            .agreement-text {
+                max-height: 300px;
+                padding: 1.25rem;
+            }
+
+            .agreement-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrap">
+                <img src="bedrock_email_sig.png" alt="Bedrock Advisory Group" class="wide-logo">
+            </a>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#calculator">ROI Engine</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="agent-support.html">Agent Support</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="onboarding-wrapper">
+
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-state">
+            <p>Loading your order details...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="error-state hidden">
+            <p id="error-message">Something went wrong. Please contact support@bedrockag.com for assistance.</p>
+        </div>
+
+        <!-- Main Content -->
+        <div id="main-content" class="hidden">
+
+            <div class="welcome-header">
+                <h1>Welcome to <span>Basic Agent Support</span></h1>
+                <p>One last step before you are all set.</p>
+            </div>
+
+            <div class="customer-info">
+                <p><strong>Name:</strong> <span id="customer-name"></span></p>
+                <p><strong>Email:</strong> <span id="customer-email"></span></p>
+                <p><strong>Order:</strong> <span id="order-id"></span></p>
+            </div>
+
+            <!-- Terms of Service -->
+            <div class="agreement-section">
+                <h2>Terms of Service</h2>
+                <div class="agreement-text">
+                    <h3>1. What This Service Is</h3>
+                    <p>Basic Agent Support is a technical support service provided by Bedrock Advisory Group ("Bedrock") for customers running a pre-configured AI agent system. Our focus is keeping your agent operational. If your agent goes down, we diagnose the issue and work to get it back up and running.</p>
+
+                    <h3>2. Per-Agent Pricing</h3>
+                    <p>All plans and pricing are per agent. Each AI agent you operate requires its own subscription or one-time support request. A single plan does not cover multiple agents.</p>
+
+                    <h3>3. What Is Included</h3>
+                    <ul>
+                        <li>Diagnosis and resolution of AI agent issues, including agent errors, configuration problems, and unresponsive agents</li>
+                        <li>Remote troubleshooting via secure, encrypted connection (Tailscale + SSH)</li>
+                        <li>Monitoring guidance and basic system health checks</li>
+                        <li>24/7 availability, with initial response within 24 hours of your support request</li>
+                    </ul>
+
+                    <h3>4. What Is Not Included</h3>
+                    <p>Basic Agent Support is focused specifically on the AI agent layer of your system. The following fall outside this scope:</p>
+                    <ul>
+                        <li><strong>Hardware issues.</strong> Physical damage, battery replacement, keyboard problems, or other hardware concerns.</li>
+                        <li><strong>WiFi and networking.</strong> Internet connectivity problems.</li>
+                        <li><strong>Operating system maintenance.</strong> OS updates, virus removal, driver issues, and general system administration.</li>
+                        <li><strong>Custom development.</strong> Building new workflows, writing integrations, or extending your agent beyond its original configuration.</li>
+                        <li><strong>Feature requests.</strong> New capabilities or enhancements are a separate engagement.</li>
+                        <li><strong>General IT support.</strong> Broader computer support is outside our scope.</li>
+                    </ul>
+
+                    <h3>5. Service Availability</h3>
+                    <p>Support is available 24 hours a day, 7 days a week. We will acknowledge your request within 24 hours.</p>
+
+                    <h3>6. Activation Period</h3>
+                    <p>Subscription plans (annual and monthly) become active 24 hours after payment is confirmed. If you need immediate assistance, the one-time support option is available with no activation delay.</p>
+
+                    <h3>7. Remote Access</h3>
+                    <p>To provide support, we access your system remotely using Tailscale and SSH. This is a secure, encrypted connection. You maintain full control over access at all times. A separate Remote Access Waiver, included below, covers the details.</p>
+
+                    <h3>8. Third-Party Services</h3>
+                    <p>Your AI agent relies on services provided by other companies, including Anthropic (Claude), Google, OpenAI, and Tailscale. Bedrock is not responsible for their outages or disruptions. We will notify you of known outages and assist with recovery.</p>
+
+                    <h3>9. Pricing and Payment</h3>
+                    <p>All pricing is per agent. Annual subscription: $300/year. Monthly subscription: $50/month. One-time support: $75/incident. All payments collected in advance.</p>
+
+                    <h3>10. Cancellation</h3>
+                    <p>Annual subscriptions receive a prorated refund for unused months. Monthly subscriptions end at the current billing period. One-time requests are non-refundable once work has begun. Contact support@bedrockag.com to cancel.</p>
+
+                    <h3>11. Limitation of Liability</h3>
+                    <p>Service is provided "as-is." You are responsible for backups. Bedrock is not liable for data loss, pre-existing conditions, third-party outages, or consequential damages. Total liability is capped at fees paid in the preceding 12 months.</p>
+
+                    <h3>12. Service Modifications</h3>
+                    <p>Bedrock will provide at least 30 days written notice before changes to terms, pricing, or scope.</p>
+                </div>
+            </div>
+
+            <!-- Remote Access Waiver -->
+            <div class="agreement-section">
+                <h2>Remote Access Waiver</h2>
+                <div class="agreement-text">
+                    <h3>How Remote Access Works</h3>
+                    <p>Bedrock uses Tailscale and SSH to connect to your system. This is a secure, encrypted connection. You are in control:</p>
+                    <ul>
+                        <li>You enable remote access when you need help</li>
+                        <li>You disable remote access when you do not</li>
+                        <li>Bedrock cannot access your system unless you have turned access on</li>
+                        <li>You can revoke access at any time, for any reason, immediately</li>
+                        <li>Each support session requires you to actively enable access</li>
+                    </ul>
+
+                    <h3>Scope of Access</h3>
+                    <p>During a support session, Bedrock will only perform actions directly related to diagnosing and resolving the specific agent issue you have reported. Bedrock will not make changes outside the scope of the reported issue without your explicit permission.</p>
+
+                    <h3>What You Are Acknowledging</h3>
+                    <ul>
+                        <li>You are requesting this access</li>
+                        <li>Remote access carries inherent risk, as with all remote support</li>
+                        <li>Bedrock will exercise reasonable care and limit access to what is necessary</li>
+                        <li>Bedrock is not liable for unintended consequences during remote sessions</li>
+                        <li>You are responsible for maintaining backups before requesting support</li>
+                    </ul>
+
+                    <h3>Confidentiality</h3>
+                    <p>Both parties agree to treat any information encountered during a support session as confidential. Bedrock will not share, disclose, or use any client data for any purpose other than providing the requested support.</p>
+
+                    <h3>Session Records</h3>
+                    <p>Bedrock may maintain records of support activities for quality assurance and documentation purposes. These records are kept confidential.</p>
+
+                    <h3>Limitation of Liability</h3>
+                    <p>Bedrock is not liable for consequential damages arising from remote support sessions. Liability is capped at the amount paid for the specific service that gave rise to the claim.</p>
+                </div>
+            </div>
+
+            <!-- Agreement Form -->
+            <form name="onboarding-agreement" method="POST" data-netlify="true" class="agreement-form">
+                <h2>Your Agreement</h2>
+
+                <input type="hidden" name="form-name" value="onboarding-agreement">
+                <input type="hidden" name="orderId" id="form-order-id">
+                <input type="hidden" name="customerName" id="form-customer-name">
+                <input type="hidden" name="customerEmail" id="form-customer-email">
+                <input type="hidden" name="agreedAt" id="form-agreed-at">
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="agree-checkbox" required>
+                    <label for="agree-checkbox">I have read and agree to the <strong>Terms of Service</strong> and <strong>Remote Access Waiver</strong> as displayed above.</label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn" disabled>Complete Onboarding</button>
+            </form>
+        </div>
+
+        <!-- Success State -->
+        <div id="success-state" class="success-state hidden">
+            <h2>You are all set.</h2>
+            <p>Your agreement has been recorded. Welcome to Basic Agent Support.</p>
+            <p>If you need help, reach us at <strong>support@bedrockag.com</strong>.</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">You can close this page.</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bedrock Advisory Group. All rights reserved.</p>
+    </footer>
+
+    <script>
+        /* Sticky Header */
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        /* Mobile Menu */
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        /* Checkbox enables submit */
+        const checkbox = document.getElementById('agree-checkbox');
+        const submitBtn = document.getElementById('submit-btn');
+        checkbox.addEventListener('change', () => {
+            submitBtn.disabled = !checkbox.checked;
+        });
+
+        /* Load order data */
+        async function loadOrder() {
+            const params = new URLSearchParams(window.location.search);
+            const orderId = params.get('orderId');
+
+            const loadingEl = document.getElementById('loading-state');
+            const errorEl = document.getElementById('error-state');
+            const mainEl = document.getElementById('main-content');
+            const errorMsg = document.getElementById('error-message');
+
+            if (!orderId) {
+                loadingEl.classList.add('hidden');
+                errorMsg.textContent = 'No order ID found. If you just completed a purchase, please check your email or contact support@bedrockag.com.';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/.netlify/functions/get-order?orderId=${encodeURIComponent(orderId)}`);
+
+                if (!response.ok) {
+                    throw new Error('Order lookup failed');
+                }
+
+                const data = await response.json();
+
+                document.getElementById('customer-name').textContent = data.name || 'Not provided';
+                document.getElementById('customer-email').textContent = data.email || 'Not provided';
+                document.getElementById('order-id').textContent = data.orderId;
+
+                // Populate hidden form fields
+                document.getElementById('form-order-id').value = data.orderId;
+                document.getElementById('form-customer-name').value = data.name || '';
+                document.getElementById('form-customer-email').value = data.email || '';
+
+                loadingEl.classList.add('hidden');
+                mainEl.classList.remove('hidden');
+
+            } catch (err) {
+                loadingEl.classList.add('hidden');
+                errorMsg.textContent = 'We could not load your order details. Please contact support@bedrockag.com with your order confirmation.';
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        /* Form submission */
+        const form = document.querySelector('form[name="onboarding-agreement"]');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Set agreement timestamp
+            document.getElementById('form-agreed-at').value = new Date().toISOString();
+
+            const formData = new FormData(form);
+            if (!formData.has('form-name')) {
+                formData.append('form-name', 'onboarding-agreement');
+            }
+
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        document.getElementById('main-content').classList.add('hidden');
+                        document.getElementById('success-state').classList.remove('hidden');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                })
+                .catch((err) => {
+                    alert('Submission failed. Please try again or contact support@bedrockag.com.');
+                    console.error(err);
+                });
+        });
+
+        /* Init */
+        loadOrder();
+    </script>
+
+</body>
+
+</html>
