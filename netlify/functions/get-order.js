@@ -1,3 +1,21 @@
+const FORM_ID = "69ce5d845108a8000883a763";
+
+async function checkOnboarded(orderId) {
+  try {
+    const netlifyToken = process.env.NETLIFY_API_TOKEN;
+    if (!netlifyToken) return false;
+    const response = await fetch(
+      `https://api.netlify.com/api/v1/forms/${FORM_ID}/submissions`,
+      { headers: { Authorization: `Bearer ${netlifyToken}` } }
+    );
+    if (!response.ok) return false;
+    const submissions = await response.json();
+    return submissions.some(s => s.data?.orderId === orderId);
+  } catch {
+    return false;
+  }
+}
+
 exports.handler = async (event) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
@@ -50,7 +68,7 @@ exports.handler = async (event) => {
         amount: order.totalAmount,
         currency: order.currency,
         status: order.status,
-        onboarded: false,
+        onboarded: await checkOnboarded(orderId),
       }),
     };
   } catch (err) {
