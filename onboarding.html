@@ -665,8 +665,8 @@
 
                 loadingEl.classList.add('hidden');
 
-                // Check if already onboarded (localStorage)
-                if (localStorage.getItem('onboarded_' + data.orderId)) {
+                // Check if already onboarded (server-side check)
+                if (data.onboarded) {
                     document.getElementById('already-complete').classList.remove('hidden');
                 } else {
                     mainEl.classList.remove('hidden');
