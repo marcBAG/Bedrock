@@ -437,7 +437,7 @@
 
         <!-- Error State -->
         <div id="error-state" class="error-state hidden">
-            <p id="error-message">Something went wrong. Please contact support@bedrockag.com for assistance.</p>
+            <p id="error-message">Something went wrong. Please contact support@bedrockadvisorygroup.com for assistance.</p>
         </div>
 
         <!-- Main Content -->
@@ -499,7 +499,7 @@
                     <p>All pricing is per agent. Annual subscription: $300/year. Monthly subscription: $50/month. One-time support: $75/incident. All payments collected in advance.</p>
 
                     <h3>10. Cancellation</h3>
-                    <p>Annual subscriptions receive a prorated refund for unused months. Monthly subscriptions end at the current billing period. One-time requests are non-refundable once work has begun. Contact support@bedrockag.com to cancel.</p>
+                    <p>Annual subscriptions receive a prorated refund for unused months. Monthly subscriptions end at the current billing period. One-time requests are non-refundable once work has begun. Contact support@bedrockadvisorygroup.com to cancel.</p>
 
                     <h3>11. Limitation of Liability</h3>
                     <p>Service is provided "as-is." You are responsible for backups. Bedrock is not liable for data loss, pre-existing conditions, third-party outages, or consequential damages. Total liability is capped at fees paid in the preceding 12 months.</p>
@@ -556,6 +556,12 @@
                 <input type="hidden" name="customerEmail" id="form-customer-email">
                 <input type="hidden" name="agreedAt" id="form-agreed-at">
 
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="agent-id" style="display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">Agent ID</label>
+                    <input type="text" id="agent-id" name="agentId" placeholder="e.g. A3F2C1" style="width: 100%; max-width: 280px; padding: 0.75rem 1rem; border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; font-size: 1rem; background: var(--light);">
+                    <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.4rem;">Found on your machine after installing support tools. Leave blank if not yet installed.</p>
+                </div>
+
                 <div class="checkbox-row">
                     <input type="checkbox" id="agree-checkbox" required>
                     <label for="agree-checkbox">I have read and agree to the <strong>Terms of Service</strong> and <strong>Remote Access Waiver</strong> as displayed above.</label>
@@ -569,7 +575,7 @@
         <div id="success-state" class="success-state hidden">
             <h2>You are all set.</h2>
             <p>Your agreement has been recorded. Welcome to Basic Agent Support.</p>
-            <p>If you need help, reach us at <strong>support@bedrockag.com</strong>.</p>
+            <p>If you need help, reach us at <strong>support@bedrockadvisorygroup.com</strong>.</p>
             <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">You can close this page.</p>
         </div>
 
@@ -626,7 +632,7 @@
 
             if (!orderId) {
                 loadingEl.classList.add('hidden');
-                errorMsg.textContent = 'No order ID found. If you just completed a purchase, please check your email or contact support@bedrockag.com.';
+                errorMsg.textContent = 'No order ID found. If you just completed a purchase, please check your email or contact support@bedrockadvisorygroup.com.';
                 errorEl.classList.remove('hidden');
                 return;
             }
@@ -654,7 +660,7 @@
 
             } catch (err) {
                 loadingEl.classList.add('hidden');
-                errorMsg.textContent = 'We could not load your order details. Please contact support@bedrockag.com with your order confirmation.';
+                errorMsg.textContent = 'We could not load your order details. Please contact support@bedrockadvisorygroup.com with your order confirmation.';
                 errorEl.classList.remove('hidden');
             }
         }
@@ -687,7 +693,7 @@
                     }
                 })
                 .catch((err) => {
-                    alert('Submission failed. Please try again or contact support@bedrockag.com.');
+                    alert('Submission failed. Please try again or contact support@bedrockadvisorygroup.com.');
                     console.error(err);
                 });
         });
