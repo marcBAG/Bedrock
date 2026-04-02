@@ -3,4 +3,4 @@ https://bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
 https://www.bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
 
 # Clean URL for MNM partnership page
-/mnm-support    /mnm-support.html   200
+/agent-support/bedrock-mnm    /agent-support/bedrock-mnm.html   200
