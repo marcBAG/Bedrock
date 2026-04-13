@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Support Downloads | Bedrock Advisory Group</title>
+    <link rel="icon" type="image/png" href="/bedrock_logo_box.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0f10;
+            --secondary: #237B8B;
+            --accent: #f7931a;
+            --light: #fafaf8;
+            --gray: #5a6b6d;
+            --border: #e0e6e7;
+            --white: #ffffff;
+        }
+        * { box-sizing: border-box; border-radius: 0 !important; }
+        body {
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--light);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        .wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+        .top img { height: 44px; width: auto; }
+        .top a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .hero {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        h1, h2 {
+            font-family: 'Crimson Pro', serif;
+            margin: 0 0 0.75rem;
+            line-height: 1.1;
+        }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 1.8rem; }
+        .sub { color: var(--gray); font-size: 1.05rem; max-width: 700px; }
+        .meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        .pill {
+            border: 1px solid var(--border);
+            background: var(--light);
+            padding: 0.55rem 0.85rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 1.4rem;
+            text-decoration: none;
+            font-weight: 800;
+            border: 2px solid var(--secondary);
+            background: var(--secondary);
+            color: var(--white);
+        }
+        .btn.secondary {
+            background: transparent;
+            color: var(--secondary);
+        }
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .code, code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.95rem;
+        }
+        .code {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            background: #f3f6f7;
+            border: 1px solid var(--border);
+            padding: 1rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        ol, ul { padding-left: 1.25rem; margin: 0.75rem 0 0; }
+        li + li { margin-top: 0.5rem; }
+        .small { color: var(--gray); font-size: 0.95rem; }
+        @media (max-width: 700px) {
+            h1 { font-size: 2.3rem; }
+            .hero, .card { padding: 1.5rem; }
+            .top { align-items: flex-start; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="top">
+            <a href="https://bedrockadvisorygroup.com"><img src="/bedrock_email_sig_transparent.png" alt="Bedrock Advisory Group"></a>
+            <a href="/agent-support/bedrock-mnm">Back to Agent Support</a>
+        </div>
+
+        <section class="hero">
+            <h1>Remote Support Downloads</h1>
+            <p class="sub">Download the installer, verify the checksum if you want, then install it normally. When support is actually needed, Bedrock will provide your support key separately.</p>
+            <div class="meta">
+                <div class="pill">Current version: v4.4</div>
+                <div class="pill">Platform: Linux</div>
+                <div class="pill">Secret-free public installer</div>
+            </div>
+            <div class="actions">
+                <a class="btn" href="/agent-support/install-support.sh">Download Installer</a>
+                <a class="btn secondary" href="/agent-support/install-support.sh.sha256">Download SHA-256</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>SHA-256</h2>
+            <div class="code">057d70c5f1b4bbbf59db04a1c04381c53a45d8c0bcbef6c079dd5d12589a50d3</div>
+            <p class="small">Raw checksum file: <a href="/agent-support/install-support.sh.sha256">bedrockadvisorygroup.com/agent-support/install-support.sh.sha256</a></p>
+        </section>
+
+        <section class="card">
+            <h2>Install</h2>
+            <div class="code">sudo bash install-support.sh</div>
+            <ol>
+                <li>Download <code>install-support.sh</code>.</li>
+                <li>Open a terminal in the download location.</li>
+                <li>Run the install command above.</li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <h2>When you actually need support</h2>
+            <div class="code">sudo support-on.sh</div>
+            <p class="small">The script will prompt for your Bedrock support key. We provide that key separately when support is needed.</p>
+            <p class="small">Optional guided version: <code>sudo support-on.sh --support-key '&lt;key from Bedrock&gt;'</code></p>
+        </section>
+    </div>
+</body>
+</html>

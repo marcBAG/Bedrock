@@ -4,6 +4,8 @@ https://www.bedrockag.com/* https://bedrockadvisorygroup.com/:splat 301!
 
 # Clean URL for MNM partnership page
 /agent-support/bedrock-mnm    /agent-support/bedrock-mnm.html   200
+/agent-support/downloads    /agent-support/downloads.html   200
+/agent-support/downloads/   /agent-support/downloads.html   200
 
 # Public installer download paths
 /agent-support/install-support    /agent-support/install-support.sh   200
