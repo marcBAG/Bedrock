@@ -44,9 +44,9 @@ exports.handler = async (event) => {
 
   const smtpUser = process.env.BEDROCK_SMTP_USER;
   const smtpPass = process.env.BEDROCK_SMTP_APP_PASSWORD;
-  const fromAddress = process.env.BEDROCK_SUPPORT_FROM || 'no-reply@bedrockadvisorygroup.com';
+  const fromAddress = process.env.BEDROCK_SUPPORT_FROM;
 
-  if (!smtpUser || !smtpPass) {
+  if (!smtpUser || !smtpPass || !fromAddress) {
     return json(500, { error: 'Missing SMTP configuration' });
   }
 
